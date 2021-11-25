@@ -40,32 +40,40 @@
         მთავარი ფილიალი
     </div>
     <div class="partners">
-      <div class="partners_info">
-        <img :src="'./assets/partner.png'" alt="" />
-        <div>გორგია, თბილისი</div>
-      </div>
-      <div class="partners_info">
-        <img :src="'./assets/partner.png'" alt="" />
-        <div>გორგია, თბილისი</div>
-      </div>
-      <div class="partners_info">
-        <img :src="'./assets/partner.png'" alt="" />
-        <div>გორგია, თბილისი</div>
-      </div>
-      <div class="partners_info">
-        <img :src="'./assets/partner.png'" alt="" />
-        <div>გორგია, თბილისი</div>
-      </div>
+      <a href="">
+        <div class="partners_info">
+          <img :src="'./assets/partner.png'" alt="" />
+          <div>გორგია, თბილისი</div>
+        </div>
+      </a>
+      <a href="">
+        <div class="partners_info">
+          <img :src="'./assets/partner.png'" alt="" />
+          <div>გორგია, თბილისი</div>
+        </div>
+      </a>
+      <a href="">
+        <div class="partners_info">
+          <img :src="'./assets/partner.png'" alt="" />
+          <div>გორგია, თბილისი</div>
+        </div>
+      </a>
+      <a href="">
+        <div class="partners_info">
+          <img :src="'./assets/partner.png'" alt="" />
+          <div>გორგია, თბილისი</div>
+        </div>
+      </a>
     </div>
     <div class="footer_wrapper">
         <div class="footer">
           
-            <div class="footer-logo"><img :src="'./assets/logo.png'" alt="" /></div> 
+            <div class="footer-logo"><a href=""><img :src="'./assets/logo.png'" alt="" /></a></div> 
             <div class="footer-rights">© 2009-2021 All Rights Reserved.</div>
             <div class="footer-contact">
                 <a href="tel:+995571126961">+995571126961</a>
-                <div class="footer-facebook"><img :src="'./assets/facebook.svg'" alt=""></div>
-                <div class="footer-instagram"><img :src="'./assets/instagram.svg'" alt=""></div>
+                <div class="footer-facebook"><a href=""><img :src="'./assets/facebook.svg'" alt=""></a></div>
+                <div class="footer-instagram"><a href=""><img :src="'./assets/instagram.svg'" alt=""></a></div>
             </div>
         </div>
     </div>

@@ -3,10 +3,10 @@
       <img class="logo" :src="'/assets/logo.png'" alt="">
       <div class="navigation">
           <div class="navigation-about-us">
-            ჩვენს შესახებ
+              <a href="#aboutUs">ჩვენს შესახებ</a>
           </div>
           <div class="navigation-where-to-buy"> 
-            სად შევიძინო?
+               <a href="#Map"> სად შევიძინო?</a>
           </div>
       </div>
   </div>

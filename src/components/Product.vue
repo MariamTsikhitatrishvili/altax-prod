@@ -336,20 +336,30 @@ export default {
   .product_info h2 {
     font-size: 24px;
   }
+  .first_popup{
+    margin-right: 0;
+  }
   .first_popup__feature_name {
     font-size: 14px;
   }
   .first_popup__feature_desc {
     font-size: 12px;
   }
+  .product {
+    justify-content: space-evenly;
+  }
+  .product_info_flex{
+    flex-direction: column;
+  }
   .product_info {
     margin-top: 0;
+    margin-left: 10px;
   }
   .product_info p {
-    font-size: 14px;
+    font-size: 12px;
   }
   .seeMorePopUp__desc {
-    font-size: 14px;
+    font-size: 12px;
   }
   .feature_name {
     font-size: 14px;
@@ -368,7 +378,34 @@ export default {
     font-size: 12px;
   }
   .product_img img {
-    width: 240px;
+    width: 210px;
+    margin-right: 40px;
+  }
+  .see__more {
+    right: 0px;
+    bottom: 0px;
+  }
+  .seeMorePopUp {
+    margin-right: 0;
+  }
+  .closeSeeMorePopUp {
+    right: 0;
+    bottom: 0;
   }
 }
+@media screen and (max-width: 480px) { 
+  .showSeeMore__firstSection {
+    display: none;
+  }
+  input {
+    padding: 15px 130px 15px 5px;
+  }
+  .contact-us--mob-info {
+    flex-wrap: wrap;
+  }
+  .contact-us--mob-info--mob, .contact-us--mob-info--email {
+    margin-bottom: 20px;
+  }
+}
+
 </style>

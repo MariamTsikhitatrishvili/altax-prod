@@ -29,7 +29,7 @@ export default {
       options: {
         licenseKey: "YOUR_KEY_HEERE",
         menu: "#menu",
-        anchors: ["page1", "page2", "page3"],
+        anchors: ["page1", "page2", "aboutUs", "Map"],
         navigation: true,
         slidesNavigation: true,
         controlArrows: false,
