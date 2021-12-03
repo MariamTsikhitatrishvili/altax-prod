@@ -118,7 +118,7 @@ export default {
   z-index: -1;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 90%);
 }
 .product_back {
   pointer-events: none;
@@ -178,7 +178,9 @@ export default {
   position: relative;
   padding: 32px 24px;
   margin-right: 80px;
-  margin-top: 45px;
+  margin-top: 20px;
+  max-width: 600px;
+  min-height: 350px;
 }
 .seeMorePopUp {
   background: #ffffff;
@@ -187,7 +189,9 @@ export default {
   border-radius: 12px;
   margin-right: 80px;
   position: relative;
-  margin-top: -25px;
+  margin-top: 20px;
+  max-width: 600px;
+  min-height: 350px;
 }
 .product_features {
   display: flex;
@@ -309,14 +313,18 @@ export default {
   display: flex;
 }
 @media screen and (max-width: 1500px) {
-  .first_popup {
-    margin-top: 50px;
+  .first_popup, .seeMorePopUp {
+    margin-top: 0px;
   }
 }
 
 @media screen and (max-width: 1190px) {
   .product_info h2 {
     font-size: 28px;
+  }
+  .first_popup, .seeMorePopUp {
+    min-height: 300px;
+    margin-top: 10px;
   }
   .product_img{
     margin-bottom: -65px;
@@ -352,12 +360,14 @@ export default {
   .product_info h2 {
     font-size: 24px;
   }
+  .first_popup, .seeMorePopUp {
+    min-width: 80%;
+  }
   .product_img{
     margin-bottom: 0px;
   }
   .first_popup{
     margin-right: 0;
-    margin-top: 10px;
   }
   .first_popup__feature_name {
     font-size: 14px;
@@ -407,7 +417,6 @@ export default {
   }
   .seeMorePopUp {
     margin-right: 0;
-    margin-top: 5px;
   }
   .closeSeeMorePopUp {
     right: 0;
@@ -418,6 +427,16 @@ export default {
   .showSeeMore__firstSection {
     display: none;
   }
+  .product_info h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  .product_img img  {
+    width: 150px;
+  }
+  .first_popup, .seeMorePopUp {
+    border-radius: 0;
+  }
   input {
     padding: 15px 130px 15px 5px;
   }
@@ -426,6 +445,9 @@ export default {
   }
   .contact-us--mob-info--mob, .contact-us--mob-info--email {
     margin-bottom: 20px;
+  }
+  .background-linear {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 70%);
   }
 }
 
