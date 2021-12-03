@@ -3,7 +3,7 @@
     <img :src="product.background_img" class="product_back" alt="" />
     <div class="background-linear"></div>
     <div class="product_info">
-      <h2>{{ product.title }}</h2>
+      <h1>{{ product.title }}</h1>
       <p>{{ product.short_desc }}</p>
     </div>
     <div class="product_info_flex">
@@ -146,10 +146,10 @@ export default {
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.product_info h2 {
-  font-size: 32px;
+.product_info h1 {
+  font-size: 35px;
   font-family: "MarkGEOCAPS-Bold";
-  margin: 16px 0;
+  margin: 14px 0;
 }
 .product_info p {
   font-size: 16px;
@@ -159,6 +159,7 @@ export default {
 .product_img {
   max-width: 380px;
   margin-left: 56px;
+  margin-bottom: 45px;
 }
 .product_img img {
   width: 100%;
@@ -173,15 +174,20 @@ export default {
 .first_popup {
   background: #ffffff;
   opacity: 0.9;
+  border-radius: 12px;
   position: relative;
   padding: 32px 24px;
   margin-right: 80px;
+  margin-top: 45px;
 }
 .seeMorePopUp {
   background: #ffffff;
+  opacity: 0.9;
   padding: 32px 24px;
+  border-radius: 12px;
   margin-right: 80px;
   position: relative;
+  margin-top: -25px;
 }
 .product_features {
   display: flex;
@@ -224,6 +230,7 @@ export default {
   right: -15px;
   bottom: -20px;
   cursor: pointer;
+  font-family: MarkGEOCAPS-Bold;
 }
 .seeMorePopUp__product_feature {
   display: flex;
@@ -251,7 +258,7 @@ export default {
 }
 .closeSeeMorePopUp {
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 9px 30px;
   color: white;
   background: #4d4d4d;
   position: absolute;
@@ -301,9 +308,18 @@ export default {
 .available__colors {
   display: flex;
 }
+@media screen and (max-width: 1500px) {
+  .first_popup {
+    margin-top: 50px;
+  }
+}
+
 @media screen and (max-width: 1190px) {
   .product_info h2 {
     font-size: 28px;
+  }
+  .product_img{
+    margin-bottom: -65px;
   }
   .product_info p {
     font-size: 16px;
@@ -336,8 +352,12 @@ export default {
   .product_info h2 {
     font-size: 24px;
   }
+  .product_img{
+    margin-bottom: 0px;
+  }
   .first_popup{
     margin-right: 0;
+    margin-top: 10px;
   }
   .first_popup__feature_name {
     font-size: 14px;
@@ -387,6 +407,7 @@ export default {
   }
   .seeMorePopUp {
     margin-right: 0;
+    margin-top: 5px;
   }
   .closeSeeMorePopUp {
     right: 0;

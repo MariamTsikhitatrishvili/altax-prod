@@ -116,4 +116,7 @@ html, body {
 .fullpage-wrapper {
   overflow-x: hidden;
 }
+h1 {
+  margin: 0;
+}
 </style>

@@ -6,7 +6,7 @@
            <img :src="'/assets/slider.png' " alt="surati" />
           </div>
           <div class="slide_text">
-            <div class="slide_text__title">{{title}}</div>
+            <h1 class="slide_text__title">{{title}}</h1>
             <div class="slide_text__desc">
               თანამედროვე ფორმულა, მაღალი ხარისხის
               ფისების სიტემა და მაღალი წინააღმდეგობა
@@ -118,7 +118,7 @@
   padding-right: 20px;
 }
 .slide_text__title {
-  font-size:  36px;
+  font-size:  42px;
   padding-bottom: 24px;
   border-bottom: 2px solid #fff;
   margin-bottom: 24px;
