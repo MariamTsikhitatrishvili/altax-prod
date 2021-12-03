@@ -323,7 +323,7 @@ export default {
     font-size: 28px;
   }
   .first_popup, .seeMorePopUp {
-    min-height: 300px;
+    min-height: 350px;
     margin-top: 10px;
   }
   .product_img{
@@ -362,6 +362,7 @@ export default {
   }
   .first_popup, .seeMorePopUp {
     min-width: 80%;
+    min-height: 300px;
   }
   .product_img{
     margin-bottom: 0px;
