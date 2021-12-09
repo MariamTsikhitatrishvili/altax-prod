@@ -40,7 +40,18 @@
         მთავარი ფილიალი
     </div>
     <div class="partners">
-      <a href="">
+      <div v-for="(partner, ind) in partners" :key="ind">
+        <div v-if="partner !== null" >
+          <a :href="partner.link">
+            <div class="partners_info">
+              <img :src="partner.image" alt="" />
+              <div>{{partner.title}}</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- <a href="">
         <div class="partners_info">
           <img :src="'./assets/partner.png'" alt="" />
           <div>გორგია, თბილისი</div>
@@ -57,13 +68,7 @@
           <img :src="'./assets/partner.png'" alt="" />
           <div>გორგია, თბილისი</div>
         </div>
-      </a>
-      <a href="">
-        <div class="partners_info">
-          <img :src="'./assets/partner.png'" alt="" />
-          <div>გორგია, თბილისი</div>
-        </div>
-      </a>
+      </a> -->
     </div>
     <div class="footer_wrapper">
         <div class="footer">
@@ -71,9 +76,9 @@
             <div class="footer-logo"><a href=""><img :src="'./assets/logo.png'" alt="" /></a></div> 
             <div class="footer-rights">© 2009-2021 All Rights Reserved.</div>
             <div class="footer-contact">
-                <a href="tel:+995571126961">+995571126961</a>
-                <div class="footer-facebook"><a href=""><img :src="'./assets/facebook.svg'" alt=""></a></div>
-                <div class="footer-instagram"><a href=""><img :src="'./assets/instagram.svg'" alt=""></a></div>
+                <a v-if="contacts.number" :href="'tel:' + contacts.number">{{contacts.number}}</a>
+                <div v-if="contacts.facebook" class="footer-facebook"><a :href="contacts.facebook" target="_blank"><img :src="'./assets/facebook.svg'" alt=""></a></div>
+                <div v-if="contacts.instagram" class="footer-instagram"><a :href="contacts.instagram" target="_blank"><img :src="'./assets/instagram.svg'" alt=""></a></div>
             </div>
         </div>
     </div>
@@ -82,6 +87,7 @@
 
 <script>
 export default {
+  props: ["partners", "contacts"],
   data() {
     return {
       zoom: 15,

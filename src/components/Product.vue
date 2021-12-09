@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <img :src="product.background_img" class="product_back" alt="" />
+    <img :src="product['bg_image URL']" class="product_back" alt="" />
     <div class="background-linear"></div>
     <div class="product_info">
       <h1>{{ product.title }}</h1>
@@ -8,42 +8,62 @@
     </div>
     <div class="product_info_flex">
       <div class="product_img">
-        <img :src="product.product_img" alt="" />
+        <img :src="product['image URL']" alt="" />
       </div>
       <div v-if="showFirstPopup" class="first_popup">
         <div class="product_features">
           <div
             class="product_feature"
-            v-for="feature in product.features"
-            :key="feature.id"
+            v-for="(feature, ind) in product.features"
+            :key="ind"
           >
-            <div><img :src="feature.feature_img" alt="" /></div>
+            <div><img :src="feature.features_img" alt="" /></div>
             <div class="first_popup__feature_name">
-              {{ feature.feature_name }}
+              {{ feature.features_name }}
             </div>
             <div class="first_popup__feature_desc">
-              {{ feature.feature_desc }}
+              {{ feature.features_desc }}
             </div>
           </div>
         </div>
         <div class="available_colors">
-          <h3>ხელმისაწვდომი ფერები</h3>
+          <h3>ფერები</h3>
           <div class="available__colors">
-            <div v-for="color in product.available_colors" :key="color">
+            <div
+              v-for="(color, ind) in product.availeble_colors"
+              :key="ind"
+              class="popup-wrapper"
+            >
               <div
+                v-if="color.color_image"
                 class="available__color"
-                :style="{ backgroundColor: color }"
+                :style="{ backgroundImage: 'url(' + color.color_image + ')' }"
+              ></div>
+              <div
+                v-else
+                class="available__color"
+                :style="{ backgroundColor: color.color_code }"
+              ></div>
+              <div
+                v-if="color.color_image"
+                class="color__popup"
+                :style="{ backgroundImage: 'url(' + color.color_image + ')' }"
+              ></div>
+              <div
+                v-else
+                class="color__popup"
+                :style="{ backgroundColor: color.color_code }"
               ></div>
             </div>
           </div>
         </div>
         <div class="available_capacity">
-          <h3>ხელმისაწვდომი მოცულობები</h3>
+          <h3>მოცულობები</h3>
           <div class="available_capacity_flex">
             <div
               class="available_capacity_item"
-              v-for="capacity in product.available_capacities"
-              :key="capacity.id"
+              v-for="(capacity, ind) in product.availeble_capacities"
+              :key="ind"
             >
               <div>{{ capacity.capacity }}ლ</div>
             </div>
@@ -55,18 +75,18 @@
         <div class="showSeeMore__firstSection">
           <div
             class="seeMorePopUp__product_feature"
-            v-for="feature in product.features"
-            :key="feature.id"
+            v-for="(feature, ind) in product.features"
+            :key="ind"
           >
-            <div><img :src="feature.feature_img" alt="" /></div>
-            <div class="feature_name">{{ feature.feature_name }}</div>
+            <div><img :src="feature.features_img" alt="" /></div>
+            <div class="feature_name">{{ feature.features_name }}</div>
           </div>
         </div>
         <div class="showSeeMore__SecondSection">
           <div
-            v-for="capacity in product.available_capacities"
+            v-for="(capacity, ind) in product.availeble_capacities"
             class="showSeeMore__SecondSection_option"
-            :key="capacity.id"
+            :key="ind"
           >
             <div class="showSeeMore__SecondSection_option__capacity">
               {{ capacity.capacity }}ლ
@@ -92,7 +112,7 @@
 
 <script>
 export default {
-  props: ["product"],
+  props: ["product", "fp"],
   data() {
     return {
       showFirstPopup: true,
@@ -109,11 +129,15 @@ export default {
       this.showSeeMore = false;
     },
   },
+  mounted() {
+    // this.fp.build()
+    console.log(this.fp);
+  },
 };
 </script>
 
 <style>
-.background-linear{ 
+.background-linear {
   position: absolute;
   z-index: -1;
   width: 100%;
@@ -211,8 +235,6 @@ export default {
   align-items: flex-start;
   flex-direction: column;
   font-family: "MarkGEOCAPS-Bold";
-}
-.available_colors {
   padding-bottom: 24px;
   border-bottom: 1px solid #d5d5d5;
 }
@@ -227,12 +249,13 @@ export default {
   margin-right: 24px;
 }
 .see__more {
-  padding: 10px 20px;
+  padding: 9px 19.5px;
+  border-radius: 8px;
   background: #e3000f;
   color: #ffffff;
   position: absolute;
-  right: -15px;
-  bottom: -20px;
+  right: -10px;
+  bottom: -10px;
   cursor: pointer;
   font-family: MarkGEOCAPS-Bold;
 }
@@ -267,6 +290,7 @@ export default {
   background: #4d4d4d;
   position: absolute;
   right: -10px;
+  border-radius: 8px;
   bottom: -10px;
   display: flex;
   justify-content: space-around;
@@ -312,9 +336,45 @@ export default {
 .available__colors {
   display: flex;
 }
+.available__color:hover ~ .color__popup {
+  display: block;
+}
+.color__popup {
+  width: 100px;
+  height: 100px;
+  top: -120px;
+  position: absolute;
+  left: -60%;
+  display: none;
+  border: 2px solid black;
+}
+.color__popup::after {
+  content: " ";
+  position: absolute;
+  right: 40px;
+  bottom: -10px;
+  border-top: 10px solid black;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: none;
+}
+.popup-wrapper {
+  position: relative;
+}
 @media screen and (max-width: 1500px) {
-  .first_popup, .seeMorePopUp {
+  .first_popup,
+  .seeMorePopUp {
     margin-top: 0px;
+  }
+}
+
+@media screen and (max-height: 768px) {
+  .product_img {
+    max-width: 325px;
+    margin-bottom: 0;
+  }
+  .first_popup {
+    padding: 24px 24px;
   }
 }
 
@@ -322,11 +382,12 @@ export default {
   .product_info h2 {
     font-size: 28px;
   }
-  .first_popup, .seeMorePopUp {
+  .first_popup,
+  .seeMorePopUp {
     min-height: 350px;
     margin-top: 10px;
   }
-  .product_img{
+  .product_img {
     margin-bottom: -65px;
   }
   .product_info p {
@@ -360,14 +421,15 @@ export default {
   .product_info h2 {
     font-size: 24px;
   }
-  .first_popup, .seeMorePopUp {
+  .first_popup,
+  .seeMorePopUp {
     min-width: 80%;
     min-height: 300px;
   }
-  .product_img{
+  .product_img {
     margin-bottom: 0px;
   }
-  .first_popup{
+  .first_popup {
     margin-right: 0;
   }
   .first_popup__feature_name {
@@ -379,7 +441,7 @@ export default {
   .product {
     justify-content: space-evenly;
   }
-  .product_info_flex{
+  .product_info_flex {
     flex-direction: column;
   }
   .product_info {
@@ -398,7 +460,7 @@ export default {
   .available_colors {
     font-size: 14px;
   }
-  .available_capacity h3{
+  .available_capacity h3 {
     font-size: 14px;
   }
   .available__color {
@@ -424,7 +486,7 @@ export default {
     bottom: 0;
   }
 }
-@media screen and (max-width: 480px) { 
+@media screen and (max-width: 480px) {
   .showSeeMore__firstSection {
     display: none;
   }
@@ -432,10 +494,11 @@ export default {
     font-size: 24px;
     margin: 0;
   }
-  .product_img img  {
+  .product_img img {
     width: 150px;
   }
-  .first_popup, .seeMorePopUp {
+  .first_popup,
+  .seeMorePopUp {
     border-radius: 0;
   }
   input {
@@ -444,12 +507,12 @@ export default {
   .contact-us--mob-info {
     flex-wrap: wrap;
   }
-  .contact-us--mob-info--mob, .contact-us--mob-info--email {
+  .contact-us--mob-info--mob,
+  .contact-us--mob-info--email {
     margin-bottom: 20px;
   }
   .background-linear {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 70%);
   }
 }
-
 </style>

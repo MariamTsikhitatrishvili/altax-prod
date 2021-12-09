@@ -1,76 +1,20 @@
 <template>
-  <div>
+  <div v-if="slider.length">
     <VueSlickCarousel v-bind="settings">
-        <div class="slide_one">
+      <div v-for="(slide, ind) in slider" :key="ind">
+        <div class="slide_one" :style="{ backgroundColor: slide.background_color }">
           <div class="main_slide">
-           <img :src="'/assets/slider.png' " alt="surati" />
+           <img :src="slide['image URL']" alt="surati" />
           </div>
           <div class="slide_text">
-            <h1 class="slide_text__title">{{title}}</h1>
+            <h1 class="slide_text__title">{{slide.title}}</h1>
             <div class="slide_text__desc">
-              თანამედროვე ფორმულა, მაღალი ხარისხის
-              ფისების სიტემა და მაღალი წინააღმდეგობა
-              ამინდის პირობებში. ფისოვანი ლაქის წყალობით,
-              თქვენი ხე ძალიან სწრაფად დაიბრუნებს ბრწყინავს
+              {{slide.desc}}
             </div>
           </div>
         </div>
-        <div class="slide_one">
-          <div class="main_slide">
-            <img :src="'/assets/slider.png' " alt="surati" />
-          </div>
-          <div class="slide_text">
-            <div class="slide_text__title">ალტაქსის ფერები</div>
-            <div class="slide_text__desc">
-              თანამედროვე ფორმულა, მაღალი ხარისხის
-              ფისების სიტემა და მაღალი წინააღმდეგობა
-              ამინდის პირობებში. ფისოვანი ლაქის წყალობით,
-              თქვენი ხე ძალიან სწრაფად დაიბრუნებს ბრწყინავს
-            </div>
-          </div>
-        </div>
-        <div class="slide_one">
-          <div class="main_slide">
-            <img :src="'/assets/slider.png' " alt="surati" />
-          </div>
-          <div class="slide_text">
-            <div class="slide_text__title">ალტაქსის ფერები</div>
-            <div class="slide_text__desc">
-              თანამედროვე ფორმულა, მაღალი ხარისხის
-              ფისების სიტემა და მაღალი წინააღმდეგობა
-              ამინდის პირობებში. ფისოვანი ლაქის წყალობით,
-              თქვენი ხე ძალიან სწრაფად დაიბრუნებს ბრწყინავს
-            </div>
-          </div>
-        </div>
-        <div class="slide_one">
-          <div class="main_slide">
-            <img :src="'/assets/slider.png' " alt="surati" />
-          </div>
-          <div class="slide_text">
-            <div class="slide_text__title">ალტაქსის ფერები</div>
-            <div class="slide_text__desc">
-              თანამედროვე ფორმულა, მაღალი ხარისხის
-              ფისების სიტემა და მაღალი წინააღმდეგობა
-              ამინდის პირობებში. ფისოვანი ლაქის წყალობით,
-              თქვენი ხე ძალიან სწრაფად დაიბრუნებს ბრწყინავს
-            </div>
-          </div>
-        </div>
-        <div class="slide_one">
-          <div class="main_slide">
-            <img :src="'/assets/slider.png' " alt="surati" />
-          </div>
-          <div class="slide_text">
-            <div class="slide_text__title">ალტაქსის ფერები</div>
-            <div class="slide_text__desc">
-              თანამედროვე ფორმულა, მაღალი ხარისხის
-              ფისების სიტემა და მაღალი წინააღმდეგობა
-              ამინდის პირობებში. ფისოვანი ლაქის წყალობით,
-              თქვენი ხე ძალიან სწრაფად დაიბრუნებს ბრწყინავს
-            </div>
-          </div>
-        </div>
+      </div>
+        
     </VueSlickCarousel>
   </div>
 </template>
@@ -81,13 +25,13 @@
   // optional style for arrows & dots
   import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
   export default {
+    props: ["slider"],
     data: function () {
         return {
             settings: {
                 dots: true,
                 dotsClass: "slick-dots custom-dot-class",
             },
-            title: "ალტაქსის ფერები"
         }
     },
     components: { VueSlickCarousel },
@@ -100,12 +44,8 @@
   width: 60%;
 }
 .slide_one {
-  background-color: #4D4D4D;
   display: flex !important;
   align-items: center;
-}
-.slide_two {
-  background-color: #464466;
 }
 .main_slide img{
   width: 100%;

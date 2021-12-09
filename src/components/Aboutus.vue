@@ -2,7 +2,7 @@
   <div class="about-us">
     <div>
       <div class="about-us--title">ჩვენს შესახებ</div>
-      <div class="about-us--desc">{{ desc }}</div>
+      <div class="about-us--desc" v-if="contacts['about_us']">{{ contacts['about_us'] }}</div>
     </div>
     <div class="contact-us">
       <div class="contact-us--info">
@@ -15,8 +15,8 @@
               alt=""
             />
           </div>
-          <a href="">
-            <div>{{ phone }}</div>
+          <a v-if="contacts.number" :href="'tel:' + contacts.number">
+            <div>{{ contacts.number }}</div>
           </a>
         </div>
         <div class="contact-us--info-mail">
@@ -27,11 +27,11 @@
               alt=""
             />
           </div>
-          <div>{{ mail }}</div>
+          <div v-if="contacts.email">{{ contacts.email }}</div>
         </div>
         <div class="contact-us--info-socials">
           <div>
-            <a href="">
+            <a v-if="contacts.facebook" :href="contacts['facebook']" target="_blank">
               <img
                 class="contact-us--info-socials-facebook"
                 :src="'/assets/facebook.svg'"
@@ -40,7 +40,7 @@
             </a>
           </div>
           <div>
-            <a href="">
+            <a v-if="contacts.instagram" :href="contacts.instagram" target="_blank">
               <img
                 class="contact-us--info-socials-instagram"
                 :src="'/assets/instagram.svg'"
@@ -78,29 +78,33 @@
             :src="'/assets/phone-outlined.svg'"
             alt=""
           />
-          <a href="tel:+577126964"> 577126964 </a>
+          <a v-if="contacts.number" :href="'tel:' + contacts.number"> {{contacts.number}} </a>
         </div>
-        <div class="contact-us--mob-info--email">
+        <div class="contact-us--mob-info--email" v-if="contacts.email">
           <img
             class="contact-us--info-mail-logo"
             :src="'/assets/mail-outlined.svg'"
             alt=""
           />
-          altax@gmail.com
+          {{contacts.email}} 
         </div>
         <div class="contact-us--mob-info--facebook">
-          <img
-            class="contact-us--info-socials-facebook"
-            :src="'/assets/facebook.svg'"
-            alt=""
-          />
+          <a v-if="contacts.facebook" :href="contacts.facebook" target="_blank">
+            <img
+              class="contact-us--info-socials-facebook"
+              :src="'/assets/facebook.svg'"
+              alt="facebook"
+            />
+          </a>
         </div>
         <div class="contact-us--mob-info--instagram">
-          <img
-            class="contact-us--info-socials-instagram"
-            :src="'/assets/instagram.svg'"
-            alt=""
-          />
+          <a v-if="contacts.instagram" :href="contacts.instagram" target="_blank">
+            <img
+              class="contact-us--info-socials-instagram"
+              :src="'/assets/instagram.svg'"
+              alt="instagram"
+            />
+          </a>
         </div>
       </div>
       <div>ან დაგვიტოვეთ ნომერი და ჩვენ დაგიკავშირდებით</div>
@@ -120,13 +124,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      desc: "ლორემ იპსუმ საპირისწამლეს ნახავდა კაბები ძეთა ორალური ტახტისმაძიებელს პატივმოყვარეობა. დამწიფებულ გაიყოლებდა დადგენილება ძეთა გაეჭრა გაცოფებული რეალისტებს დიდებასა კრინოლინი ანალიზზე. ცხოვრობდა მანძილი გადმომდგარს ვოლტერს გაეჭრა ფშაველაზე. მოვარჩენ დაგვრჩა ძაღლმა ოქროსი ბაბილონსა გავკარებივარ ხვალ.ლორემ იპსუმ საპირისწამლეს ნახავდა კაბები ძეთა ორალური ტახტისმაძიებელს პატივმოყვარეობა. დამწიფებულ, ლორემ იპსუმ საპირისწამლეს ნახავდა კაბები ძეთა ორალური ტახტისმაძიებელს პატივმოყვარეობა. დამწიფებულ გაიყოლებდა დადგენილება ძეთა გაეჭრა გაცოფებული რეალისტებს დიდებასა კრინოლინი ანალიზზე. ცხოვრობდა მანძილი გადმომდგარს ვოლტერს გაეჭრა ფშაველაზე. მოვარჩენ დაგვრჩა ძაღლმა ოქროსი ბაბილონსა გავკარებივარ ხვალ. ლორემ იპსუმ საპირისწამლეს ნახავდა კაბები ძეთა ორალური ტახტისმაძიებელს პატივმოყვარეობა. დამწიფებულ გაიყოლებდა დადგენილება ძეთა გაეჭრა გაცოფებული რეალისტებს დიდებასა კრინოლინი ანალიზზე. ცხოვრობდა მანძილი გადმომდგარს ვოლტერს გაეჭრა ფშაველაზე. მოვარჩენ დაგვრჩა ძაღლმა ოქროსი ბაბილონსა გავკარებივარ ხვალ.ლორემ იპსუმ საპირისწამლეს ნახავდა კაბები ძეთა ორალური ტახტისმაძიებელს პატივმოყვარეობა. დამწიფებულ, ლორემ იპსუმ საპირისწამლეს ნახავდა კაბები ძეთა ორალური ტახტისმაძიებელს პატივმოყვარეობა. დამწიფებულ გაიყოლებდა დადგენილება ძეთა გაეჭრა გაცოფებული რეალისტებს დიდებასა კრინოლინი ანალიზზე. ცხოვრობდა მანძილი გადმომდგარს ვოლტერს გაეჭრა ფშაველაზე. მოვარჩენ დაგვრჩა ძაღლმა ოქროსი ბაბილონსა გავკარებივარ ხვალ.",
-      phone: "577126964",
-      mail: "altax@gmail.com",
-    };
-  },
+  props: ["contacts"]
 };
 </script>
 

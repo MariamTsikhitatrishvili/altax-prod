@@ -4,11 +4,15 @@
   <full-page ref="fullpage" :options="options" id="fullpage">
     <Header/>
     <div class="section" id="section0">
-      <Slider/>
+      <Slider :slider="slider" />
     </div>
-    <div class="section" id="section1"><Product :product = "products.product1"/></div>
-    <div class="section"><Aboutus/></div>
-    <div class="section"><Footer/></div>
+    <div class="section" id="sect">
+      <Product :product = "products[0]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    
+    <div class="section"><Aboutus :contacts="contacts"/></div>
+    <div class="section"><Footer :partners="partners"  :contacts="contacts"/></div>
   </full-page>
   </div>
 </template>
@@ -19,6 +23,7 @@ import Slider from "./components/Slider.vue"
 import Aboutus from "./components/Aboutus.vue"
 import Footer from "./components/Footer.vue"
 import Product from "./components/Product.vue"
+import axios from "axios";
 
 export default {
   name: "App",
@@ -26,6 +31,11 @@ export default {
   data() {
     return {
       imgUrl: "slider.png",
+      data: null,
+      products: null,  
+      slider: null,
+      partners: null,
+      contacts: null,
       options: {
         licenseKey: "YOUR_KEY_HEERE",
         menu: "#menu",
@@ -36,66 +46,107 @@ export default {
         dragAndMove: true,
         responsiveWidth: 800,
         afterResponsive: function(isResponsive){
-          
         }
       },
-      products: { 
-        product1: { 
-          background_img: "./assets/background1.png",
-          title: "ფასადის ლაქი",
-          product_img: "./assets/product1.png",
-          short_desc: "ხის ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულა, რომლიც დამზადებულია ხის ფისოვან ნაერთზე, არის ძალიან გამძლე ამინდის რთულ პირობებში",
-          long_desc: "ხის ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულა, რომლიც დამზადებულია ხის ფისოვან ნაერთზე, არის ძალიან გამძლე ამინდის რთულ პირობებში ხის ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულა ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულ",
-          features: [
-            {
-               id: "1",
-               feature_name: "დამცავი",
-               feature_desc: "ფისოვანი სისტემა",
-               feature_img: "./assets/feature1.png"
-            },
-            {
-               id: "2",
-               feature_name: "დამცავი",
-               feature_desc: "ფისოვანი სისტემა",
-               feature_img: "./assets/feature1.png"
-            },
-            {
-               id: "3",
-               feature_name: "დამცავი",
-               feature_desc: "ფისოვანი სისტემა",
-               feature_img: "./assets/feature1.png"
-            },
-            {
-               id: "4",
-               feature_name: "დამცავი",
-               feature_desc: "ფისოვანი სისტემა",
-               feature_img: "./assets/feature1.png"
-            }             
-          ],
-          available_colors: ["red", "blue", "green"],
-          available_capacities: [
-            {
-              id: 1,
-              capacity: "0.7",
-              fill: "9"
-            },
-            {
-              id: 2,
-              capacity: "2.5",
-              fill: "30"
-            },
-            {
-              id: 3,
-              capacity: "7.5",
-              fill: "60"
-            }
-          ]
-        }
-      }
+      // products: { 
+      //   product1: { 
+      //     background_img: "./assets/background1.png",
+      //     title: "ფასადის ლაქი",
+      //     product_img: "./assets/product1.png",
+      //     short_desc: "ხის ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულა, რომლიც დამზადებულია ხის ფისოვან ნაერთზე, არის ძალიან გამძლე ამინდის რთულ პირობებში",
+      //     long_desc: "ხის ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულა, რომლიც დამზადებულია ხის ფისოვან ნაერთზე, არის ძალიან გამძლე ამინდის რთულ პირობებში ხის ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულა ფასადის ლაქის ( სინთეტიკური ცვილით) თანამედროვე ფორმულ",
+      //     features: [
+      //       {
+      //          id: "1",
+      //          feature_name: "დამცავი",
+      //          feature_desc: "ფისოვანი სისტემა",
+      //          feature_img: "./assets/feature1.png"
+      //       },
+      //       {
+      //          id: "2",
+      //          feature_name: "დამცავი",
+      //          feature_desc: "ფისოვანი სისტემა",
+      //          feature_img: "./assets/feature1.png"
+      //       },
+      //       {
+      //          id: "3",
+      //          feature_name: "დამცავი",
+      //          feature_desc: "ფისოვანი სისტემა",
+      //          feature_img: "./assets/feature1.png"
+      //       },
+      //       {
+      //          id: "4",
+      //          feature_name: "დამცავი",
+      //          feature_desc: "ფისოვანი სისტემა",
+      //          feature_img: "./assets/feature1.png"
+      //       }             
+      //     ],
+      //     available_colors: ["red", "blue", "green"],
+      //     available_capacities: [
+      //       {
+      //         id: 1,
+      //         capacity: "0.7",
+      //         fill: "9"
+      //       },
+      //       {
+      //         id: 2,
+      //         capacity: "2.5",
+      //         fill: "30"
+      //       },
+      //       {
+      //         id: 3,
+      //         capacity: "7.5",
+      //         fill: "60"
+      //       }
+      //     ]
+      //   }
+      // }
     };
   },
   mounted() {
-    console.log("mounted");
+    this.getData()
+  },
+  methods: {
+    getData() {
+      axios.get("http://altax-admin.maestroerror.ge/data/data.json")
+          .then((res) => this.data = {... res.data["მენიუ"]})
+          .then(() => {
+            this.products = this.data["Products"];
+            this.slider =  this.data["Slider"];
+            this.partners = this.data["Partners"];
+            this.contacts = this.data["Contacts"];
+            console.log(this.slider, "slideria");
+          })
+    },
+        // afterLoad: function(origin, destination, direction){
+        //     console.log("After load....");
+        //     console.log(destination);
+        // },
+        // addSection: function(e) {
+        //     var newSectionNumber = document.querySelectorAll('.fp-section').length + 1
+
+        //     // creating the section div
+        //     var section = document.createElement('div')
+        //     section.className = 'section'
+        //     section.innerHTML = `<Product href="#page${newSectionNumber}" :product = "products[0]"></Product>`
+
+        //     // adding section
+        //     document.querySelector('#fullpage').appendChild(section)
+
+        //     // creating the section menu element
+        //     var sectionMenuItem = document.createElement('li')
+        //     sectionMenuItem.setAttribute('data-menuanchor', 'page' + newSectionNumber)
+        //     sectionMenuItem.innerHTML = `<a href="#page${newSectionNumber}">Section${newSectionNumber}</a>`
+
+        //     // adding anchor for the section
+        //     this.options.anchors.push(`page${newSectionNumber}`)
+
+        //     // we have to call `update` manually as DOM changes won't fire updates
+        //     // requires the use of the attribute ref="fullpage" on the
+        //     // component element, in this case, <full-page>
+        //     // ideally, use an ID element for that element too
+        //     this.$refs.fullpage.build()
+        // },
   }
 };
 </script>
