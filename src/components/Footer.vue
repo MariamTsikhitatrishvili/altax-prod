@@ -1,6 +1,6 @@
 <template>
   <div class="last_page">
-    <vl-map data-projection="EPSG:4326" style="height: 400px">
+    <vl-map data-projection="EPSG:4326" style="height: 45vh">
       <vl-view
         :zoom.sync="zoom"
         :center.sync="center"

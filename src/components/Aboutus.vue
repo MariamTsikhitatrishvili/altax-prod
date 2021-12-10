@@ -88,6 +88,7 @@
           />
           {{contacts.email}} 
         </div>
+        <div class="socials__wrappers">
         <div class="contact-us--mob-info--facebook">
           <a v-if="contacts.facebook" :href="contacts.facebook" target="_blank">
             <img
@@ -105,6 +106,7 @@
               alt="instagram"
             />
           </a>
+        </div>
         </div>
       </div>
       <div>ან დაგვიტოვეთ ნომერი და ჩვენ დაგიკავშირდებით</div>
@@ -178,9 +180,6 @@ export default {
 }
 .contact-us--info-socials {
   display: flex;
-}
-.contact-us--info-socials-facebook {
-  margin-right: 48px;
 }
 .ask-to-call--title {
   font-size: 24px;
@@ -266,14 +265,23 @@ label {
     display: block;
     text-align: center;
   }
+  .socials__wrappers {
+    display: flex;
+    width: 70px;
+    justify-content: space-between;
+  }
+  .contact-us--mob-info--mob,  .contact-us--mob-info--email{
+    margin-bottom: 12px;
+  }
   .about-us {
     justify-content: space-around;
   }
   .contact-us--mob-info {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin: 40px 0;
+    margin: 20px 0;
   }
   .mob-column {
     display: flex;

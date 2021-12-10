@@ -141,13 +141,13 @@ export default {
   position: absolute;
   z-index: -1;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 90%);
 }
 .product_back {
   pointer-events: none;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   z-index: -1;
@@ -373,8 +373,14 @@ export default {
     max-width: 325px;
     margin-bottom: 0;
   }
+  .about-us--title {
+    margin: 35px 0 24px;
+  }
   .first_popup {
     padding: 24px 24px;
+  }
+  .partners {
+    margin-top: 190px;
   }
 }
 
@@ -440,6 +446,7 @@ export default {
   }
   .product {
     justify-content: space-evenly;
+    height: unset;
   }
   .product_info_flex {
     flex-direction: column;
@@ -490,6 +497,9 @@ export default {
   .showSeeMore__firstSection {
     display: none;
   }
+  .product_back {
+    height: 100%;
+  }
   .product_info h1 {
     font-size: 24px;
     margin: 0;
@@ -503,6 +513,7 @@ export default {
   }
   input {
     padding: 15px 130px 15px 5px;
+    max-width: 48vw;
   }
   .contact-us--mob-info {
     flex-wrap: wrap;
@@ -513,6 +524,7 @@ export default {
   }
   .background-linear {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 70%);
+    height: 100%;
   }
 }
 </style>

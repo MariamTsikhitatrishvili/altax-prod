@@ -46,10 +46,11 @@
 .slide_one {
   display: flex !important;
   align-items: center;
+  padding-bottom: 12px;
 }
 .main_slide img{
   width: 100%;
-  height: 100%
+  height: 102%
 }
 .slide_text{
   max-width: 480px;
