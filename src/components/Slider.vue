@@ -64,7 +64,7 @@
 .backdrop {
   position: absolute;
   width: 100%;
-  opacity: 0.2%;
+  opacity: 0.2;
   height: 100%;
   background: black;
   z-index: 1;
