@@ -1,10 +1,11 @@
 <template>
   <div v-if="slider.length">
-    <VueSlickCarousel v-bind="settings">
+    <VueSlickCarousel v-bind="settings" class="desktop_slider">
       <div v-for="(slide, ind) in slider" :key="ind">
         <div class="slide_one" :style="{ backgroundColor: slide.background_color }">
           <div class="main_slide">
-           <img :src="slide['image URL']" alt="surati" />
+           <img v-if="slide['image URL'].length" :src="slide['image URL']" alt="surati" />
+           <video v-if="slide['Video URL'].length" autoplay muted loop playsinline src="https://ak.picdn.net/shutterstock/videos/1053283298/preview/stock-footage-abstract-seamless-loop-of-d-render-neon-circle-blue-and-purple-neon-circles-abstract-futuristic.mp4"></video>
           </div>
           <div class="slide_text">
             <h1 class="slide_text__title">{{slide.title}}</h1>
@@ -14,7 +15,24 @@
           </div>
         </div>
       </div>
+    </VueSlickCarousel>
+    <VueSlickCarousel v-bind="settings" class="mobile_slider">
+      <div v-for="(slide, ind) in slider" :key="ind">
+        <div class="backdrop"></div>
         
+        <div class="slide_one" :style="{ backgroundImage: 'url(' + slide['image URL'] + ')', backgroundRepeat: 'no-repeat', backgroundPosition : 'center', backgroundSize: 'cover' }">
+          <div class="main_slide">
+
+          </div>
+          <div class="slide_text">
+            <video v-if="slide['Video URL'].length" autoplay muted loop playsinline src="https://ak.picdn.net/shutterstock/videos/1053283298/preview/stock-footage-abstract-seamless-loop-of-d-render-neon-circle-blue-and-purple-neon-circles-abstract-futuristic.mp4"></video>
+            <h1 class="slide_text__title">{{slide.title}}</h1>
+            <div class="slide_text__desc">
+              {{slide.desc}}
+            </div>
+          </div>
+        </div>
+      </div>
     </VueSlickCarousel>
   </div>
 </template>
@@ -30,6 +48,7 @@
         return {
             settings: {
                 dots: true,
+                infinite:false,
                 dotsClass: "slick-dots custom-dot-class",
             },
         }
@@ -39,6 +58,18 @@
 </script>
 
 <style>
+.mobile_slider {
+  display: none !important;
+}
+.backdrop {
+  position: absolute;
+  width: 100%;
+  opacity: 20%;
+  height: 100%;
+  background: black;
+  z-index: 1;
+  pointer-events: none;
+}
 .main_slide {
   height:100vh;
   width: 60%;
@@ -56,7 +87,8 @@
   max-width: 480px;
   color: #fff;
   padding-left: 80px;
-  padding-right: 20px;
+  padding-right: 30px;
+  z-index: 200;
 }
 .slide_text__title {
   font-size:  42px;
@@ -79,7 +111,7 @@
 .slick-dots {
     z-index: 1000;
     position: absolute;
-    bottom: 10px;
+    bottom: 25px;
     right: 43%;
 }
 
@@ -101,21 +133,31 @@
     opacity: 1;
 }
 .main_slide {
-    background-image: url('/assets/slider.png') ;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+}
+video {
+  min-height: 100%;
+  min-width: 100%;
 }
 @media screen and (max-width: 1100px) { 
- .main_slide img{
-  display: none !important;
-
+  video {
+    width: 60%;
+    margin: 12px auto;
+  }
+  .mobile_slider {
+    display: block !important;
+  }
+ .desktop_slider {
+   display: none !important;
  }
  .slide_text__title {
    font-size: 24px
  }
  .slide_text__desc {
-   font-size: 16px
+   font-size: 14px
  }
  .main_slide {
   background-image: none !important;

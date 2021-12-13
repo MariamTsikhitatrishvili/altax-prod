@@ -379,9 +379,6 @@ export default {
   .first_popup {
     padding: 24px 24px;
   }
-  .partners {
-    margin-top: 190px;
-  }
 }
 
 @media screen and (max-width: 1190px) {

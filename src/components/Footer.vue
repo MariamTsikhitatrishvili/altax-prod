@@ -44,7 +44,7 @@
         <div v-if="partner !== null" >
           <a :href="partner.link">
             <div class="partners_info">
-              <img :src="partner.image" alt="" />
+              <img :src="partner['image URL']" alt="" />
               <div>{{partner.title}}</div>
             </div>
           </a>
@@ -178,6 +178,12 @@ a {
   color: black;
 }
 
+@media screen and (max-height: 768px) {
+  .partners {
+    margin-top: 180px;
+  }
+}
+
 @media screen and (max-width: 1190px) {
   .partners_info img {
     width: 200px
@@ -228,7 +234,7 @@ a {
   .partners{
     display: flex;
     flex-direction: column;
-    margin-top: 0px;
+    margin-top: 20px;
   }
   .vl-map {
     position: inherit;
