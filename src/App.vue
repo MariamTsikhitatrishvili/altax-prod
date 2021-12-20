@@ -6,11 +6,46 @@
     <div class="section" id="section0">
       <Slider :slider="slider" />
     </div>
-    <div class="section" id="sect">
+    <div class="section" v-if="products[0]" id="sect">
       <Product :product = "products[0]"/>
       <!-- <div @click="addSection">add section</div> -->
     </div>
-    
+    <div class="section" v-if="products[1]" id="sect">
+      <Product :product = "products[1]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[2]" id="sect">
+      <Product :product = "products[2]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[3]" id="sect">
+      <Product :product = "products[3]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[4]" id="sect">
+      <Product :product = "products[4]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[5]" id="sect">
+      <Product :product = "products[5]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[6]" id="sect">
+      <Product :product = "products[6]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[7]" id="sect">
+      <Product :product = "products[7]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[8]" id="sect">
+      <Product :product = "products[8]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
+    <div class="section" v-if="products[9]" id="sect">
+      <Product :product = "products[9]"/>
+      <!-- <div @click="addSection">add section</div> -->
+    </div>
     <div class="section"><Aboutus :contacts="contacts"/></div>
     <div class="section"><Footer :partners="partners"  :contacts="contacts"/></div>
   </full-page>
@@ -39,12 +74,13 @@ export default {
       options: {
         licenseKey: "YOUR_KEY_HEERE",
         menu: "#menu",
-        anchors: ["page1", "page2", "aboutUs", "Map"],
+        anchors: ["page1", "product1",  "product2",  "product3", "product4", "product5",  "product6",  "product7",  "product8", "aboutUs", "Map"],
         navigation: true,
         slidesNavigation: true,
         controlArrows: false,
         dragAndMove: true,
         responsiveWidth: 800,
+        normalScrollElements: '.scrollable-content',
         afterResponsive: function(isResponsive){
         }
       },
@@ -159,6 +195,24 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 html, body {
   font-family: MarkGEO-SemiBold;

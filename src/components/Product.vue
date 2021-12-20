@@ -1,6 +1,14 @@
 <template>
-  <div class="product">
-    <img :src="product['bg_image URL']" class="product_back" alt="" />
+  <div
+    class="product"
+    :style="{
+      backgroundImage: 'url(' + product['bg_image URL'] + ')',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+    }"
+  >
+    <!-- <img :src="product['bg_image URL']" class="product_back" alt="" /> -->
     <div class="background-linear"></div>
     <div class="product_info">
       <h1>{{ product.title }}</h1>
@@ -98,9 +106,9 @@
             </div>
           </div>
         </div>
-        <div class="seeMorePopUp__desc">
-          {{ product.long_desc }}
-        </div>
+          <div class="seeMorePopUp__desc scrollable-content">
+            {{ product.long_desc }}
+          </div>
         <div class="closeSeeMorePopUp" @click="closeSeeMore">
           <img :src="'./assets/back.svg'" alt="" />
           უკან
@@ -137,9 +145,15 @@ export default {
 </script>
 
 <style>
+.overflow_hidden {
+  overflow: hidden;
+}
+.feature_name {
+  text-align: center;
+}
 .background-linear {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 90%);
@@ -161,6 +175,7 @@ export default {
   color: white;
   margin-left: 56px;
   margin-top: 56px;
+  z-index: 1;
 }
 .product {
   height: 100vh;
@@ -184,6 +199,7 @@ export default {
   max-width: 380px;
   margin-left: 56px;
   margin-bottom: 45px;
+  z-index: 1;
 }
 .product_img img {
   width: 100%;
@@ -194,6 +210,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 60%;
 }
 .first_popup {
   background: #ffffff;
@@ -205,6 +222,7 @@ export default {
   margin-top: 20px;
   max-width: 600px;
   min-height: 350px;
+  max-height: 350px;
 }
 .seeMorePopUp {
   background: #ffffff;
@@ -216,6 +234,7 @@ export default {
   margin-top: 20px;
   max-width: 600px;
   min-height: 350px;
+  max-height: 350px;
 }
 .product_features {
   display: flex;
@@ -281,6 +300,8 @@ export default {
 }
 .seeMorePopUp__desc {
   max-width: 600px;
+  height: 100px;
+  overflow-y: auto;
   font-family: "MarkGEO-Light";
 }
 .closeSeeMorePopUp {
@@ -389,6 +410,7 @@ export default {
   .seeMorePopUp {
     min-height: 350px;
     margin-top: 10px;
+    border-radius: 0;
   }
   .product_img {
     margin-bottom: -65px;
@@ -401,6 +423,7 @@ export default {
   }
   .feature_name {
     font-size: 14px;
+    text-align: center;
   }
   .showSeeMore__SecondSection_option__capacity {
     font-family: MarkGEOCAPS-Bold;
@@ -460,6 +483,7 @@ export default {
   }
   .feature_name {
     font-size: 14px;
+    text-align: center;
   }
   .available_colors {
     font-size: 14px;

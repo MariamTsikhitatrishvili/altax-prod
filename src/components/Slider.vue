@@ -73,6 +73,7 @@
 .main_slide {
   height:100vh;
   width: 60%;
+  pointer-events: none;
 }
 .slide_one {
   display: flex !important;

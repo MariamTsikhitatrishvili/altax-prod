@@ -58,15 +58,15 @@
           <form>
             <div class="column">
               <label>თქვენი სახელი</label>
-              <input type="name" />
+              <input type="name" v-model="name" />
             </div>
             <div class="column">
               <label>თქვენი ნომერი</label>
-              <input type="phone" />
+              <input type="phone" v-model="phoneNumber"/>
             </div>
           </form>
         </div>
-        <button class="contact_submit">გამოგზავნა</button>
+        <button class="contact_submit" @click="sendMail">გამოგზავნა</button>
       </div>
     </div>
     <div class="contact-us--mob">
@@ -113,20 +113,41 @@
       <div class="contact-us--mob-form">
         <div class="mob-column">
           <label></label>
-          <input type="name" placeholder="თქვენი სახელი" />
+          <input type="name" placeholder="თქვენი სახელი" v-model="name"/>
         </div>
         <div class="mob-column">
           <label></label>
-          <input type="phone" placeholder="თქვენი ნომერი" />
+          <input type="phone" placeholder="თქვენი ნომერი" v-model="phoneNumber"/>
         </div>
+        <button class="contact_submit" @click="sendMail">გამოგზავნა</button>
       </div>
     </div>
   </div>
 </template>
-
 <script>
+import axios from "axios";
+
 export default {
-  props: ["contacts"]
+  data() {
+    return {
+      name: '',
+      phoneNumber: ''
+    }
+  },
+  props: ["contacts"],
+  methods: {
+    sendMail() {
+      axios.post('http://altax-admin.maestroerror.ge/data/email.php', {
+        send_email: "altax2021",
+        name: this.name,
+        number: this.phoneNumber
+      })
+      .then(() => {
+        this.name = '',
+        this.phoneNumber = ''
+      } )
+    }
+  }
 };
 </script>
 
@@ -161,6 +182,9 @@ export default {
   font-size: 32px;
   margin-bottom: 74px;
   font-family: "MarkGEOCAPS-Bold";
+}
+.contact-us--info-socials-facebook {
+  margin-right: 16px;
 }
 .contact-us--info-phone,
 .contact-us--info-mail {
@@ -226,6 +250,7 @@ label {
   margin-top: 32px;
   font-family: "MarkGEOCAPS-Bold";
   align-self: center;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1190px) {
@@ -258,6 +283,9 @@ label {
   }
 }
 @media screen and (max-width: 992px) {
+  .contact-us--info-socials-facebook {
+    margin-right: 0px;
+  }
   .contact-us {
     display: none;
   }
