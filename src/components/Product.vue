@@ -456,7 +456,7 @@ export default {
     margin-bottom: 0px;
   }
   .first_popup {
-    margin-right: 0;
+    height: 300px;
   }
   .first_popup__feature_name {
     font-size: 14px;
@@ -472,7 +472,7 @@ export default {
     flex-direction: column;
   }
   .product_info {
-    margin-top: 0;
+    margin-top: 24px;
     margin-left: 10px;
   }
   .product_info p {
@@ -513,6 +513,20 @@ export default {
     right: 0;
     bottom: 0;
   }
+  .first_popup, .seeMorePopUp {
+    margin: 10px;
+    height: 300px;
+  } 
+  .closeSeeMorePopUp, .see__more {
+    border-radius: 0;
+  }
+  .seeMorePopUp, .first_popup {
+    padding: 40px 24px;
+  }
+  .background-linear {
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0) , #000000 130%);
+    height: 100%;
+  }
 }
 @media screen and (max-width: 480px) {
   .showSeeMore__firstSection {
@@ -542,10 +556,6 @@ export default {
   .contact-us--mob-info--mob,
   .contact-us--mob-info--email {
     margin-bottom: 20px;
-  }
-  .background-linear {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 70%);
-    height: 100%;
   }
 }
 </style>

@@ -224,4 +224,19 @@ html, body {
 h1 {
   margin: 0;
 }
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+  border-radius: 0 !important;
+  height: 24px !important;
+  width: 1px !important;
+  background: white !important;
+}
+#fp-nav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li a.active span, .fp-slidesNav ul li:hover a.active span {
+  background: white !important;
+  width: 9px !important;
+  background: #e3000f !important;
+}
+#fp-nav ul li:hover a span, .fp-slidesNav ul li:hover a span {
+  width: 9px !important;
+  margin: -6px 0 0 -6px !important;
+}
 </style>
