@@ -25,7 +25,7 @@
             v-for="(feature, ind) in product.features"
             :key="ind"
           >
-            <div><img :src="feature.features_img" alt="" /></div>
+            <div class="feature_img"><img :src="feature.features_img" alt="" /></div>
             <div class="first_popup__feature_name">
               {{ feature.features_name }}
             </div>
@@ -86,7 +86,7 @@
             v-for="(feature, ind) in product.features"
             :key="ind"
           >
-            <div><img :src="feature.features_img" alt="" /></div>
+           <img :src="feature.features_img" alt="" />
             <div class="feature_name">{{ feature.features_name }}</div>
           </div>
         </div>
@@ -406,6 +406,9 @@ export default {
   .product_info h2 {
     font-size: 28px;
   }
+  .product_info {
+    margin-top: 8px;
+  }
   .first_popup,
   .seeMorePopUp {
     min-height: 350px;
@@ -413,7 +416,7 @@ export default {
     border-radius: 0;
   }
   .product_img {
-    margin-bottom: -65px;
+    margin-bottom: -40px;
   }
   .product_info p {
     font-size: 16px;
@@ -521,7 +524,7 @@ export default {
     border-radius: 0;
   }
   .seeMorePopUp, .first_popup {
-    padding: 40px 24px;
+    padding: 40px 20px;
   }
   .background-linear {
     background: linear-gradient(360deg, rgba(0, 0, 0, 0) , #000000 130%);
@@ -531,6 +534,19 @@ export default {
 @media screen and (max-width: 480px) {
   .showSeeMore__firstSection {
     display: none;
+  }
+  .first_popup__feature_name {
+    font-size: 12px;
+  }
+  .first_popup__feature_desc {
+    font-size: 11px;
+  }
+  .feature_img {
+    width: 35px;
+  }
+  .feature_img img {
+    width: 100%;
+    height: 100%;
   }
   .product_back {
     height: 100%;
