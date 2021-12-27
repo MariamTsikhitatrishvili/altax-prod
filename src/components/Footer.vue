@@ -186,7 +186,7 @@ a {
 }
 @media screen and (max-height: 768px) {
   .partners {
-    margin-top: 180px;
+    margin-top: 126px;
   }
   
 }
@@ -217,7 +217,7 @@ a {
   }
   .partners {
     padding: 10px 30px;
-    margin-top: 250px;
+    margin-top: 126px;
   }
   .footer {
     padding: 19px 150px 32px 50px;
@@ -244,6 +244,11 @@ a {
   }
   .footer-logo img {
     width: 60px;
+  }
+  .footer-rights {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>
