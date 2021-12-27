@@ -249,8 +249,12 @@ label {
   border: 0;
   margin-top: 32px;
   font-family: "MarkGEOCAPS-Bold";
-  align-self: center;
+  align-self: end;
   cursor: pointer;
+  border-radius: 8px;
+}
+.ask-to-call input, .contact-us--mob-form input{
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 1190px) {

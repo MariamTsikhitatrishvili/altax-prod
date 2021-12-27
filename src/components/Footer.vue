@@ -36,51 +36,51 @@
         ></vl-geom-multi-polygon>
       </vl-feature>
     </vl-map>
-    <div class="map-title">
-        მთავარი ფილიალი
-    </div>
+    <div class="map-title">მთავარი ფილიალი</div>
     <div class="partners">
       <div v-for="(partner, ind) in partners" :key="ind">
-        <div v-if="partner !== null" >
-          <a :href="partner.link">
+        <div v-if="partner !== null">
+          <a :href="partner.link" target="_blank">
             <div class="partners_info">
-              <img :src="partner['image URL']" alt="" />
-              <div>{{partner.title}}</div>
+              <div
+                class="partners_info_img"
+                :style="{
+                  backgroundImage: 'url(' + partner['image URL'] + ')',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }"
+              >
+                <!-- <img :src="partner['image URL']" alt="" /> -->
+              </div>
+              <div>{{ partner.title }}</div>
             </div>
           </a>
         </div>
       </div>
-
-      <!-- <a href="">
-        <div class="partners_info">
-          <img :src="'./assets/partner.png'" alt="" />
-          <div>გორგია, თბილისი</div>
-        </div>
-      </a>
-      <a href="">
-        <div class="partners_info">
-          <img :src="'./assets/partner.png'" alt="" />
-          <div>გორგია, თბილისი</div>
-        </div>
-      </a>
-      <a href="">
-        <div class="partners_info">
-          <img :src="'./assets/partner.png'" alt="" />
-          <div>გორგია, თბილისი</div>
-        </div>
-      </a> -->
     </div>
     <div class="footer_wrapper">
-        <div class="footer">
-          
-            <div class="footer-logo"><a href=""><img :src="'./assets/logo.png'" alt="" /></a></div> 
-            <div class="footer-rights">© 2009-2021 All Rights Reserved.</div>
-            <div class="footer-contact">
-                <a v-if="contacts.number" :href="'tel:' + contacts.number">{{contacts.number}}</a>
-                <div v-if="contacts.facebook" class="footer-facebook"><a :href="contacts.facebook" target="_blank"><img :src="'./assets/facebook.svg'" alt=""></a></div>
-                <div v-if="contacts.instagram" class="footer-instagram"><a :href="contacts.instagram" target="_blank"><img :src="'./assets/instagram.svg'" alt=""></a></div>
-            </div>
+      <div class="footer">
+        <div class="footer-logo">
+          <a href=""><img :src="'./assets/logo.png'" alt="" /></a>
         </div>
+        <div class="footer-rights">© 2009-2021 All Rights Reserved.</div>
+        <div class="footer-contact">
+          <a v-if="contacts.number" :href="'tel:' + contacts.number">{{
+            contacts.number
+          }}</a>
+          <div v-if="contacts.facebook" class="footer-facebook">
+            <a :href="contacts.facebook" target="_blank"
+              ><img :src="'./assets/facebook.svg'" alt=""
+            /></a>
+          </div>
+          <div v-if="contacts.instagram" class="footer-instagram">
+            <a :href="contacts.instagram" target="_blank"
+              ><img :src="'./assets/instagram.svg'" alt=""
+            /></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -117,98 +117,91 @@ export default {
 .partners_info img {
   margin-bottom: 16px;
   filter: grayscale(100%);
-  transition: transform .4s;
+  transition: transform 0.4s;
 }
 .partners_info img:hover {
-    transform: scale(1.1); 
-    filter: grayscale(0%);
+  transform: scale(1.1);
+  filter: grayscale(0%);
 }
 .footer_wrapper {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.footer {  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding : 10px 150px 10px 50px
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 150px 10px 50px;
 }
 .footer-rights {
-    align-self: flex-end;
-    color: #7E7E7E;
-    font-family: "MarkGEOCAPS-Light";
+  align-self: flex-end;
+  color: #7e7e7e;
+  font-family: "MarkGEOCAPS-Light";
 }
 .last_page {
-    width: 100%
+  width: 100%;
 }
 .footer-contact {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-family: "MarkGEOCAPS-Light";
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: "MarkGEOCAPS-Light";
 }
 .footer-facebook {
-    padding: 0 13px;
-    border-right: 1px solid #000;
- }
-.footer-instagram {
-    padding-left: 13px;
+  padding: 0 13px;
+  border-right: 1px solid #000;
 }
-.partners, .footer_wrapper {
-  background-color:white;
+.footer-instagram {
+  padding-left: 13px;
+}
+.partners,
+.footer_wrapper {
+  background-color: white;
 }
 .map-title {
-    background-color: white;
-    font-size: 24px;
-    padding: 12px;
-    font-family: "MarkGEOCAPS-Bold";
-    border: 1px solid #C8C8C8;
-    border-radius: 0px 15px 15px 0px;
-    position: absolute; 
-    top: 20px;
+  background-color: white;
+  font-size: 24px;
+  padding: 12px;
+  font-family: "MarkGEOCAPS-Bold";
+  border: 1px solid #c8c8c8;
+  border-radius: 0px 15px 15px 0px;
+  position: absolute;
+  top: 20px;
 }
 .ol-zoom {
-    top: 90px !important;
+  top: 90px !important;
 }
 
 a {
   text-decoration: none;
   color: black;
 }
-
+.partners_info_img {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  filter: grayscale(100%);
+}
 @media screen and (max-height: 768px) {
   .partners {
     margin-top: 180px;
   }
+  
 }
 
 @media screen and (max-width: 1190px) {
-  .partners_info img {
-    width: 200px
+  .partners_info_img {
+    width: 150px;
+    height: 150px;
   }
   .partners_info {
-    font-size: 14px
+    font-size: 14px;
   }
   .partners {
     padding: 30px 70px;
-    margin-top: 250px;
-  }
-  .footer {
-    padding: 19px 150px 32px 50px;
-  }
-}
-@media screen and (max-width: 1190px) {
-  .partners_info img {
-    width: 200px
-  }
-  .partners_info {
-    font-size: 14px
-  }
-  .partners {
-    padding: 30px 70px;
-    margin-top: 250px;
+    margin-top: 126px;
   }
   .footer {
     padding: 19px 150px 32px 50px;
@@ -217,10 +210,10 @@ a {
 
 @media screen and (max-width: 990px) {
   .partners_info img {
-    width: 160px
+    width: 160px;
   }
   .partners_info {
-    font-size: 12px
+    font-size: 12px;
   }
   .partners {
     padding: 10px 30px;
@@ -230,8 +223,8 @@ a {
     padding: 19px 150px 32px 50px;
   }
 }
-@media screen and (max-width: 700px) { 
-  .partners{
+@media screen and (max-width: 700px) {
+  .partners {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
@@ -244,13 +237,13 @@ a {
   }
   .footer {
     font-size: 10px;
-    padding: 15px 10px
+    padding: 15px 10px;
   }
   .footer-contact {
-    font-size: 12px
+    font-size: 12px;
   }
-  .footer-logo img{
-    width:60px;
+  .footer-logo img {
+    width: 60px;
   }
 }
 </style>

@@ -506,28 +506,29 @@ export default {
     margin-right: 40px;
   }
   .see__more {
-    right: 0px;
-    bottom: 0px;
+    right: 8px;
+    bottom: 8px;
   }
   .seeMorePopUp {
     margin-right: 0;
   }
   .closeSeeMorePopUp {
-    right: 0;
-    bottom: 0;
+    right: 8px;
+    bottom: 8px;
   }
   .first_popup, .seeMorePopUp {
-    margin: 10px;
     height: 300px;
+    margin: 0;
+    opacity: 1;
   } 
-  .closeSeeMorePopUp, .see__more {
-    border-radius: 0;
+  .seeMorePopUp__desc {
+    height: 75px;
   }
   .seeMorePopUp, .first_popup {
     padding: 40px 20px;
   }
   .background-linear {
-    background: linear-gradient(360deg, rgba(0, 0, 0, 0) , #000000 130%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) , #000000 50%);
     height: 100%;
   }
 }

@@ -79,7 +79,7 @@ export default {
         slidesNavigation: true,
         controlArrows: false,
         dragAndMove: true,
-        responsiveWidth: 800,
+        responsiveWidth: 891,
         normalScrollElements: '.scrollable-content',
         afterResponsive: function(isResponsive){
         }
