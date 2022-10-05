@@ -27,6 +27,7 @@ export default {};
   align-items: center;
   justify-content: space-between;
 }
+
 .navigation {
   background: white;
   display: flex;
@@ -44,6 +45,7 @@ export default {};
 }
 .logo {
   margin: 20px 0 0 20px;
+  width: 80px;
 }
 @media screen and (max-width: 1100px) {
   .navigation {

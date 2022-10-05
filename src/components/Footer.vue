@@ -184,6 +184,11 @@ a {
   height: 250px;
   filter: grayscale(100%);
 }
+
+.footer-logo img {
+    width: 80px;
+  }
+
 @media screen and (max-height: 768px) {
   .partners {
     margin-top: 126px;

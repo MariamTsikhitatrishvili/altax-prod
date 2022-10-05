@@ -5,7 +5,9 @@
         <div class="slide_one" :style="{ backgroundColor: slide.background_color }">
           <div class="main_slide">
            <img v-if="slide['image URL'].length" :src="slide['image URL']" alt="surati" />
-           <video v-if="slide['Video URL'].length" autoplay muted loop playsinline src="https://ak.picdn.net/shutterstock/videos/1053283298/preview/stock-footage-abstract-seamless-loop-of-d-render-neon-circle-blue-and-purple-neon-circles-abstract-futuristic.mp4"></video>
+           <video v-if="slide['Video URL'].length" autoplay muted loop playsinline 
+           :src="slide['Video URL']"
+           ></video>
           </div>
           <div class="slide_text">
             <h1 class="slide_text__title">{{slide.title}}</h1>
@@ -25,7 +27,9 @@
 
           </div>
           <div class="slide_text">
-            <video v-if="slide['Video URL'].length" autoplay muted loop playsinline src="https://ak.picdn.net/shutterstock/videos/1053283298/preview/stock-footage-abstract-seamless-loop-of-d-render-neon-circle-blue-and-purple-neon-circles-abstract-futuristic.mp4"></video>
+            <video v-if="slide['Video URL'].length" autoplay muted loop playsinline 
+            :src="slide['Video URL']"
+            ></video>
             <h1 class="slide_text__title">{{slide.title}}</h1>
             <div class="slide_text__desc">
               {{slide.desc}}
@@ -74,6 +78,7 @@
   height:100vh;
   width: 60%;
   pointer-events: none;
+  display: flex;
 }
 .slide_one {
   display: flex !important;
